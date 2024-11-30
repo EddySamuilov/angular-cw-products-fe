@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,13 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'cw-products';
+  
+  constructor(private apiService: ApiService) {}
+
+  loadUsers() {
+    return this.apiService.getPosts(5).subscribe((data) => {
+      console.log(data);
+      
+    });
+  }
 }
