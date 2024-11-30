@@ -1,0 +1,63 @@
+<div class="main-ctn">
+  <h1>Welcome to SHOP-IT</h1>
+  <p>Searh for amazing products!</p>
+</div>
+
+<section>
+  <h2>Featured products</h2>
+  <article class="products">
+    @for (product of products; track $index) {
+    <article class="product">
+      <header>
+        <span> {{ product.category.type }} </span>
+        <img [src]="product.imageUrl" alt="product-img">
+      </header>
+      <article class="product-content">
+        <p class="product-content-info">
+          Title: {{ product.title }}
+        </p>
+        <p class="product-content-info">
+          Description: {{ product.description.length > 50 ? product.description.substring(0, 50) : product.description }}
+        </p>
+      </article>
+      <footer>
+        <article class="product-price">
+          <p>{{ product.price }}BGN</p>
+        </article>
+        <article class="product-cta">
+          <button class="btn product-btn">Details</button>
+        </article>
+      </footer>
+    </article>
+  }
+  </article>
+</section>
+
+
+<!-- 
+<section>
+  <h2>Shop by Category</h2>
+  <article class="categories">
+    @for (category of categories; track $index) {
+    <article class="category">
+      <header>
+        <span> {{ category.category.type }} </span>
+        <img [src]="category.imageUrl" alt="category-img">
+      </header>
+      <article class="category-content">
+        <p class="category-content-info">
+          Title: {{ category.title }}
+        </p>
+        <p class="category-content-info">
+          Description: {{ category.description.length > 50 ? category.description.substring(0, 50) : category.description }}
+        </p>
+      </article>
+      <footer>
+        <article class="category-cta">
+          <button class="btn category-btn">Details</button>
+        </article>
+      </footer>
+    </article>
+  }
+  </article>
+</section> -->
