@@ -1,29 +1,31 @@
-
 <header>
   <article class="logo-container">
-    <img class="logo-icon" src="/nav/logo-icon.png" alt="Sidebarche">
-    <img class="logo-img" src="/nav/favicon.ico" alt="SoftUni logogo">
+    <img class="logo-icon" src="/nav/logo-icon.png" alt="sidebarche">
+    <img class="logo-img" src="/nav/favicon.ico" alt="logogo" routerLink="/home">
   </article>
 
   <nav>
     <ul>
       <li class="nav-item">
-        <a class="nav-link" href="#">Products</a>
+        <a class="nav-link" routerLink="/products">Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Categories</a>
+        <a class="nav-link" routerLink="/Categories">Categories</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contacts</a>
+        <a class="nav-link" routerLink="/contacts">Contacts</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profile </a>
+        <a class="nav-link" routerLink="/profile">Profile </a>
       </li>
 
       <li class="nav-item login-nav-item">
         <img src="/nav/search.png" alt="Searcharka">
         <button class="btn login-btn">
           Login
+        </button>
+        <button class="btn register-btn">
+          Register
         </button>
       </li>
     </ul>

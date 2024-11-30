@@ -1,1 +1,12 @@
-<p>product works!</p>
+<div>
+  <ul>
+    @for (product of products; track $index) {
+      <li>
+        Product
+        name: {{ product.title }}
+        description: {{ product.description }}
+        type: {{ product.type }} 
+      </li>
+    }
+  </ul>
+</div>
