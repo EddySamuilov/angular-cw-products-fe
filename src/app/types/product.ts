@@ -10,3 +10,12 @@ export interface Product {
   created: string;
   modified: string;
 }
+
+export interface ProductUpsert {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+  price: number;
+  categoryId: number;
+}
