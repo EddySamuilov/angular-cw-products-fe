@@ -1,1 +1,27 @@
-<p>category works!</p>
+
+<section>
+  <h2>Shop by Category</h2>
+  <article class="categories">
+    @for (category of categories; track $index) {
+    <article class="category">
+      <header>
+        <span> {{ category.type }} </span>
+        <img [src]="category.imageUrl" alt="category-img">
+      </header>
+      <article class="category-content">
+        <p class="category-content-info">
+          Type: {{ category.type }}
+        </p>
+        <p class="category-content-info">
+          Description: {{ category.description }}
+        </p>
+      </article>
+      <footer>
+        <article class="category-cta">
+          <button class="btn category-btn" (click)="onViewCategoryProducts(category.id)">View products</button>
+        </article>
+      </footer>
+    </article>
+  }
+  </article>
+</section>

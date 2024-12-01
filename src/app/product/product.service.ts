@@ -18,11 +18,11 @@ export class ProductService {
     // })
   }
 
-  getProducts(): Observable<Product[]> {
+  getProducts(categoryId: string | null): Observable<Product[]> {
     let url = `/api/products`;
-    // if (limit) {
-    //   url += `?limit=${limit}`;
-    // }
+    if (categoryId) {
+      url += `?categoryId=${categoryId}`;
+    }
 
     return this.http.get<Product[]>(url);
   }

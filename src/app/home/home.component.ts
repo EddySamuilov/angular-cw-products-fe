@@ -3,7 +3,7 @@ import { Product } from '../types/product';
 import { ProductService } from '../product/product.service';
 import { Category } from '../types/category';
 import { CategoryService } from '../category/category.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { SlicePipe } from '../pipes/slice.pipe';
 
 @Component({
@@ -20,11 +20,12 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private categortService: CategoryService
+    private categortService: CategoryService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((products) => {
+    this.productService.getProducts(null).subscribe((products) => {
       console.log(products);
 
       this.isLoading = false;
@@ -35,5 +36,9 @@ export class HomeComponent implements OnInit {
       this.isLoading = false;
       this.categories = categories;
     })
+  }
+
+  onViewCategoryProducts(categoryId: string) {
+    this.router.navigate(['/products'], { queryParams: { categoryId } })
   }
 }
