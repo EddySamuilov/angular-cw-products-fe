@@ -11,8 +11,7 @@
               id="category"
               name="category"
               value="category"
-              formControlName="category"
-            >
+              formControlName="category">
             @for (category of categories; track $index) {
               <option [ngValue]="category">{{category.type}}</option>
             }
@@ -63,31 +62,27 @@
   </ng-container>
 } @else {
   <ng-container >
-  <article class="product">
-    <header>
-      <span> {{ product.category.type }} </span>
-      <img [src]="product.imageUrl" alt="product-img" />
-    </header>
-    <article class="product-content">
-      <p class="product-content-info">Title: {{ product.title | titlecase }}</p>
-      <p class="product-content-info">Description: {{ product.description }}</p>
-      <p class="product-content-info">
-        Created at: {{ product.created | elapsedTime }}
-      </p>
-      <p class="product-content-info">
-        Updated at: {{ product.modified | elapsedTime }}
-      </p>
+    <article class="product">
+      <header>
+        <span> {{ product.category.type }} </span>
+        <img [src]="product.imageUrl" alt="product-img" />
+      </header>
+      <article class="product-content">
+        <p class="product-content-info">Title: {{ product.title | titlecase }}</p>
+        <p class="product-content-info">Description: {{ product.description }}</p>
+        <p class="product-content-info">Created at: {{ product.created | elapsedTime }}</p>
+        <p class="product-content-info">Updated at: {{ product.modified | elapsedTime }}</p>
+      </article>
+      <footer>
+        <article class="product-price">
+          <p>{{ product.price }}BGN</p>
+        </article>
+        <article class="product-btn-cta">
+          <button class="btn product-btn green-btn" (click)="triggerEditMode($event)">Edit</button>
+          <button class="btn product-btn red-btn" (click)="onDelete(product.id)">Delete</button>
+        </article>
+      </footer>
     </article>
-    <footer>
-      <article class="product-price">
-        <p>{{ product.price }}BGN</p>
-      </article>
-      <article class="product-btn-cta">
-        <button class="btn product-btn green-btn" (click)="triggerEditMode($event)">Edit</button>
-        <button class="btn product-btn red-btn">Delete</button>
-      </article>
-    </footer>
-  </article>
-</ng-container>
-    }
+  </ng-container>
+}
 </section>

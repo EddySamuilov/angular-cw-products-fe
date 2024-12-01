@@ -38,4 +38,10 @@ export class ProductService {
       .put<Product>(`/api/products/${product.id}`, product)
       .pipe(tap((product) => this.product$$.next(product)));
   }
+
+  deleteProduct(productId: number): Observable<Product> {
+    return this.http
+      .delete<Product>(`/api/products/${productId}`)
+      .pipe(tap((product) => this.product$$.next(product)));
+  }
 }

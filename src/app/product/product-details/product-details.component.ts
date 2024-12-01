@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product, ProductUpsert } from '../../types/product';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../product.service';
 import { DatePipe, SlicePipe, TitleCasePipe } from '@angular/common';
 import { ElapsedTimePipe } from '../../pipes/elapsed-time.pipe';
@@ -32,7 +32,8 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -56,4 +57,8 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+  onDelete(id: number): void {
+    this.productService.deleteProduct(id).subscribe(() => {});
+    this.router.navigate(['/products']);
+  }
 }
