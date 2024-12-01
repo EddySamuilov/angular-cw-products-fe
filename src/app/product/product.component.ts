@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../types/product';
 import { ProductService } from './product.service';
+import { ElapsedTimePipe } from '../pipes/elapsed-time.pipe';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [],
+  imports: [ElapsedTimePipe, DatePipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
