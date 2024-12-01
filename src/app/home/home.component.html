@@ -34,19 +34,19 @@
 </section>
 
 
-<!-- 
+
 <section>
   <h2>Shop by Category</h2>
   <article class="categories">
     @for (category of categories; track $index) {
     <article class="category">
       <header>
-        <span> {{ category.category.type }} </span>
+        <span> {{ category.type }} </span>
         <img [src]="category.imageUrl" alt="category-img">
       </header>
       <article class="category-content">
         <p class="category-content-info">
-          Title: {{ category.title }}
+          Type: {{ category.type }}
         </p>
         <p class="category-content-info">
           Description: {{ category.description.length > 50 ? category.description.substring(0, 50) : category.description }}
@@ -60,4 +60,4 @@
     </article>
   }
   </article>
-</section> -->
+</section>

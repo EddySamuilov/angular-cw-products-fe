@@ -22,6 +22,7 @@ h2 {
   box-shadow: 0px 3px 8px -4px;
 }
 
+/* the product sec */
 .products {
   display: flex;
   justify-content: center;
@@ -35,7 +36,7 @@ h2 {
   color: black;
   border-radius: 12px;
   margin: 25px;
-  box-shadow: 0px 2px 4px -2px;
+  box-shadow: -7px 10px 4px -2px;
   text-align: center;
   width: 450px;
   height: 400px;
@@ -51,6 +52,7 @@ h2 {
   position: relative;
   text-align: center;
   padding: 60px 30px;
+  box-shadow: 0px 9px 8px -4px;
 }
 
 .product header h3 {
@@ -115,6 +117,108 @@ h2 {
 }
 
 .product img {
+  width: 200px;
+  height: 100px;
+}
+
+/* categories section */
+
+
+.categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+  flex-wrap: wrap;
+}
+
+.category {
+  background-color: white;
+  color: black;
+  border-radius: 12px;
+  margin: 25px;
+  box-shadow: 0px 2px 4px -2px;
+  text-align: center;
+  width: 450px;
+  height: 400px;
+  box-shadow: -7px 10px 4px -2px;
+}
+
+.category header{
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+
+  background-color: rgb(186, 20, 100);
+  color: black;
+
+  position: relative;
+  text-align: center;
+  padding: 60px 30px;
+  box-shadow: 0px 9px 8px -4px;
+}
+
+.category header h3 {
+  text-align: center;
+  padding: 20px 20px;
+  font-size: x-large;
+}
+
+.category header span {
+  background-color: black;
+  border-radius: 6px;
+  text-transform: uppercase;
+  color: white;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: small;
+}
+
+.category-content {
+  padding-top: 20px;
+  display: inline;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
+
+.category-content span {
+  margin: 5px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.category-content::after {
+  content: "";
+  display: block;
+  width: 90%;
+  margin: 9px 5px;
+  height: 1px;
+  background: lightgrey;
+}
+
+.category footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+
+.category-price {
+  font-weight: bold;
+  font-size: 24px;
+  color: rgb(189, 13, 13);
+}
+
+.category-cta .btn {
+  font-weight: bolder;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.category img {
   width: 200px;
   height: 100px;
 }
