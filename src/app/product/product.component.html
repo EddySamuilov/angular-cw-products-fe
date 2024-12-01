@@ -1,12 +1,35 @@
-<div>
-  <ul>
+<section>
+  <h2>All products</h2>
+  <article class="products">
     @for (product of products; track $index) {
-      <li>
-        Product
-        name: {{ product.title }}
-        description: {{ product.description }}
-        type: {{ product.category.type }} 
-      </li>
-    }
-  </ul>
-</div>
+    <article class="product">
+      <header>
+        <span> {{ product.category.type }} </span>
+        <img [src]="product.imageUrl" alt="product-img">
+      </header>
+      <article class="product-content">
+        <p class="product-content-info">
+          Title: {{ product.title }}
+        </p>
+        <p class="product-content-info">
+          Description: {{ product.description.length > 50 ? product.description.substring(0, 50) : product.description }}
+        </p>
+        <p class="product-content-info">
+          Created at: {{ product.created }}
+        </p>
+        <p class="product-content-info">
+          Updated at: {{ product.modified }}
+        </p>
+      </article>
+      <footer>
+        <article class="product-price">
+          <p>{{ product.price }}BGN</p>
+        </article>
+        <article class="product-cta">
+          <button class="btn product-btn">Details</button>
+        </article>
+      </footer>
+    </article>
+  }
+  </article>
+</section>
