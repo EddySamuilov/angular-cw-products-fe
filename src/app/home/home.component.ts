@@ -4,11 +4,12 @@ import { ProductService } from '../product/product.service';
 import { Category } from '../types/category';
 import { CategoryService } from '../category/category.service';
 import { RouterLink } from '@angular/router';
+import { SlicePipe } from '../pipes/slice.pipe';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, SlicePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
