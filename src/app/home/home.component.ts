@@ -3,11 +3,12 @@ import { Product } from '../types/product';
 import { ProductService } from '../product/product.service';
 import { Category } from '../types/category';
 import { CategoryService } from '../category/category.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

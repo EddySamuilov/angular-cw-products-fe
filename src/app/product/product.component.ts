@@ -3,11 +3,12 @@ import { Product } from '../types/product';
 import { ProductService } from './product.service';
 import { ElapsedTimePipe } from '../pipes/elapsed-time.pipe';
 import { DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [ElapsedTimePipe, DatePipe],
+  imports: [RouterLink, ElapsedTimePipe, DatePipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })

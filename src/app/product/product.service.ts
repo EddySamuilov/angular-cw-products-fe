@@ -18,4 +18,13 @@ export class ProductService {
 
     return this.http.get<Product[]>(url);
   }
+
+  getSingleProduct(productId: number): Observable<Product> {
+    let url = `/api/products/${productId}`;
+    // if (limit) {
+    //   url += `?limit=${limit}`;
+    // }
+
+    return this.http.get<Product>(url);
+  }
 }
