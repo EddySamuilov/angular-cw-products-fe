@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
-import { UserLogin } from '../types/user';
+import { UserLogin, UserRegister } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +27,12 @@ export class UserService implements OnDestroy {
   login(email: string, password: string): Observable<UserLogin> {
     return this.http
       .post<UserLogin>('/api/users/login', { email, password })
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  register(registerRequest: UserRegister): Observable<UserRegister> {
+    return this.http
+      .post<UserRegister>('/api/users/register', registerRequest)
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
