@@ -1,0 +1,20 @@
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(192, 14, 14);
+  width: 120px;
+  height: 20px;
+  border-radius: 20px;
+  background:
+   radial-gradient(farthest-side,orange 94%,#0000) left/20px 20px no-repeat
+   black;
+  animation: l2 1s infinite linear;
+  padding: 30px 85px;
+  
+}
+@keyframes l2 {
+    50% {background-position:right }
+}

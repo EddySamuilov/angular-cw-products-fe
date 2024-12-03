@@ -3,6 +3,9 @@
   <p>Searh for amazing products!</p>
 </div>
 
+@if (isLoading) {
+  <app-loader />
+} @else {
 <section>
   <h2>Featured products</h2>
   <article class="products">
@@ -60,3 +63,5 @@
   }
   </article>
 </section>
+
+}

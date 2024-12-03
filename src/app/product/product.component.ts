@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../types/product';
 import { ProductService } from './product.service';
-import { ElapsedTimePipe } from '../pipes/elapsed-time.pipe';
+import { ElapsedTimePipe } from '../shared/pipes/elapsed-time.pipe';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 

@@ -3,11 +3,12 @@ import { Category } from '../types/category';
 import { CategoryService } from './category.service';
 import { ProductService } from '../product/product.service';
 import { Router } from '@angular/router';
+import { LoaderComponent } from '../shared/loader/loader.component';
 
 @Component({
   selector: 'app-category',
   standalone: true,
-  imports: [],
+  imports: [LoaderComponent],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css',
 })

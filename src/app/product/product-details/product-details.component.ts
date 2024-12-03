@@ -3,7 +3,7 @@ import { Product, ProductUpsert } from '../../types/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../product.service';
 import { DatePipe, SlicePipe, TitleCasePipe } from '@angular/common';
-import { ElapsedTimePipe } from '../../pipes/elapsed-time.pipe';
+import { ElapsedTimePipe } from '../../shared/pipes/elapsed-time.pipe';
 import { Categories, Category, CategoryTypes } from '../../types/category';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
