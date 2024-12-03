@@ -18,4 +18,6 @@ export interface ProductUpsert {
   imageUrl: string;
   price: number;
   categoryId: number;
+  created: string;
+  modified: string;
 }
