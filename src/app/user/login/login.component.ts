@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-  import { FormsModule, NgForm, NgModel } from '@angular/forms';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
   import { NgClass } from '@angular/common';
 import { UserService } from '../user.service';
 import { UserLogin } from '../../types/user';
@@ -8,13 +8,11 @@ import { UserLogin } from '../../types/user';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  domains = ['bg', 'com'];
-
   hasPasswordErrors(password: NgModel) {
     return password.touched && (password.errors?.['required'] || password.errors?.['minlength']);
   }
@@ -35,11 +33,10 @@ export class LoginComponent {
     
     const { email, password } = loginForm.value;
     
-    
     this.userService.login(email, password).subscribe({
       next:(response) => {
         // console.log("Received response" + response.token);
-        this.router.navigateByUrl('home');
+        this.router.navigateByUrl('/home');
       }, error:(err) => {
         console.log("Received err response!", err);
       }

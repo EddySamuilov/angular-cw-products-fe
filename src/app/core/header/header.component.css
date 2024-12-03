@@ -12,7 +12,7 @@ header nav ul {
   display: flex;
   align-items: center;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 .logo-container img {
@@ -34,17 +34,19 @@ header nav ul {
   text-transform: uppercase;
   text-decoration: solid;
   color: rgb(186, 20, 100);
-  transition: transform 0.3s ease, color 0.3s ease;
-
+  transition: transform 0.5s ease, color 0.5s ease;
 }
 
 .nav-link:hover {
   cursor: pointer;
   color: wheat;
-  font-size: large;
 }
 
 .logo-img:hover {
   cursor: pointer;
   transform: scale(1.3);
+}
+
+.login-btn {
+  margin-left: 33px;
 }
