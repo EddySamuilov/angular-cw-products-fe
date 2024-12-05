@@ -13,12 +13,10 @@ import { UserLogin } from '../../types/user';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  hasPasswordErrors(password: NgModel) {
-    return password.touched && (password.errors?.['required'] || password.errors?.['minlength']);
-  }
-  hasUsernameErrors(username: NgModel) {
-    return username.touched && (username.errors?.['required'])
-      //  || username.errors?.['myEmailValidator']);
+  hasLoginError = false;
+
+  isRequired(field: NgModel) {
+    return field.touched && (field.errors?.['required']);
   }
 
   constructor(
@@ -28,7 +26,7 @@ export class LoginComponent {
 
   onSubmit(loginForm: NgForm) {
     if (loginForm.invalid) {
-      alert('Inavlid username or password!');
+      alert('Login form is invalid!');
       return;
     }
     
@@ -39,7 +37,8 @@ export class LoginComponent {
         localStorage.setItem('token', response.token);
         this.router.navigateByUrl('/home');
       }, error:(err) => {
-        console.log("Login error: ", err);
+        this.hasLoginError = true;
+        // alert(err.error);
       }
     });
 

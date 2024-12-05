@@ -113,3 +113,7 @@ h2 {
   border-left-color: red !important;
   border-color: red !important;
 }
+
+.login-err {
+  padding: 5px;
+}

@@ -10,7 +10,7 @@
           </span>
         </label>
         <input
-          [class]="hasUsernameErrors(usernameInput) ? 'input-error' : ''"
+          [class]="isRequired(usernameInput) ? 'input-error' : ''"
           type="text"
           name="username"
           id="username"
@@ -21,13 +21,8 @@
         />
       </p>
 
-      @if (usernameInput.touched) {
-          @if (usernameInput.errors?.['required']) {
-            <p class="error">Username is required!</p>
-          }
-          <!-- @if (usernameInput.errors?.['emailValidator']) {
-            <p class="error">Email is not valid!</p>
-          } -->
+      @if (usernameInput.touched && usernameInput.errors?.['required']) {
+        <p class="error">Email is required for a login!</p>
       }
 
       <p class="field field-icon">
@@ -37,7 +32,7 @@
           </span>
         </label>
         <input
-          [class]="hasPasswordErrors(passwordInput) ? 'input-error' : ''"
+          [class]="isRequired(passwordInput) ? 'input-error' : ''"
           type="password"
           name="password"
           id="password"
@@ -45,17 +40,17 @@
           ngModel
           #passwordInput="ngModel"
           required
-          minlength="3"
         />
       </p>
 
-      @if (passwordInput.touched) {
-          @if (passwordInput.errors?.['required']) {
-            <p class="error">Password is required!</p>
-          }
-          @if (passwordInput.errors?.['minlength']) {
-            <p class="error">Password must be at least 3 characters!</p>
-          }
+      @if (passwordInput.touched && passwordInput.errors?.['required']) {
+        <p class="error">Password is required for a login!</p>
+      }
+      
+      @if (hasLoginError) {
+        <div class="login-err error">
+          Invalid username and/or password!
+        </div>
       }
         
       <button [disabled]="loginForm.invalid" [class]="loginForm.invalid ? 'login-btn-disabled' : 'login-btn-enabled' ">Login</button>
