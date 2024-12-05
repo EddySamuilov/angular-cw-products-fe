@@ -36,7 +36,13 @@ export class UserService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
+  logout() {
+    localStorage.clear();
+    return this.user$$.next(null);
+  }
+
   ngOnDestroy(): void {
     this.userSubscription?.unsubscribe();
+    localStorage.clear();
   }
 }

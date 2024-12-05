@@ -20,7 +20,7 @@
 
       <li class="nav-item login-nav-item">
         @if (isUserLoggedIn) {
-          <button class="btn logout-btn" routerLink="/logout">Logout</button>
+          <app-logout />
         } @else {
           <button class="btn login-btn" routerLink="/login">Login</button>
           <button class="btn register-btn" routerLink="/register">Register</button>
