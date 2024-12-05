@@ -16,8 +16,9 @@ export class LoginComponent {
   hasPasswordErrors(password: NgModel) {
     return password.touched && (password.errors?.['required'] || password.errors?.['minlength']);
   }
-  hasEmailErrors(email: NgModel) {
-    return email.touched && (email.errors?.['required'] || email.errors?.['myEmailValidator']);
+  hasUsernameErrors(username: NgModel) {
+    return username.touched && (username.errors?.['required'])
+      //  || username.errors?.['myEmailValidator']);
   }
 
   constructor(
@@ -31,14 +32,14 @@ export class LoginComponent {
       return;
     }
     
-    const { email, password } = loginForm.value;
+    const { username, password } = loginForm.value;
     
-    this.userService.login(email, password).subscribe({
+    this.userService.login( username, password ).subscribe({
       next:(response) => {
-        // console.log("Received response" + response.token);
+        localStorage.setItem('token', response.token);
         this.router.navigateByUrl('/home');
       }, error:(err) => {
-        console.log("Received err response!", err);
+        console.log("Login error: ", err);
       }
     });
 

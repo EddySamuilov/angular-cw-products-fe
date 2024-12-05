@@ -1,4 +1,3 @@
-
 .loader {
   position: absolute;
   top: 50%;
@@ -13,6 +12,7 @@
    black;
   animation: l2 1s infinite linear;
   padding: 30px 85px;
+  text-align: center;
   
 }
 @keyframes l2 {

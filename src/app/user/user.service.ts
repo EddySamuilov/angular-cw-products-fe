@@ -8,11 +8,11 @@ import { UserLogin, UserRegister } from '../types/user';
   providedIn: 'root',
 })
 export class UserService implements OnDestroy {
-  private user$$ = new BehaviorSubject<UserLogin | null>(null);
+  private user$$ = new BehaviorSubject<UserLogin | UserRegister | null>(null);
   private user$ = this.user$$.asObservable();
   private userSubscription: Subscription | null = null;
 
-  user: UserLogin | null = null;
+  user: UserLogin | UserRegister | null = null;
 
   get isLogged(): boolean {
     return !!this.user;
@@ -24,9 +24,9 @@ export class UserService implements OnDestroy {
     })
   }
 
-  login(email: string, password: string): Observable<UserLogin> {
+  login(username: string, password: string): Observable<UserLogin> {
     return this.http
-      .post<UserLogin>('/api/users/login', { email, password })
+      .post<UserLogin>('/api/users/login', { username, password })
       .pipe(tap((user) => this.user$$.next(user)));
   }
 

@@ -13,7 +13,7 @@
               value="category"
               formControlName="category">
             @for (category of categories; track $index) {
-              <option [ngValue]="category">{{category.type}}</option>
+              <option [ngValue]="category">{{ category.type }}</option>
             }
             </select>
           <img [src]="product.imageUrl" alt="product-img" />

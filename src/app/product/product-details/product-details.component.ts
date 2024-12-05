@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../product.service';
 import { DatePipe, SlicePipe, TitleCasePipe } from '@angular/common';
 import { ElapsedTimePipe } from '../../shared/pipes/elapsed-time.pipe';
-import { Categories, Category, CategoryTypes } from '../../types/category';
+import { Categories, Category, } from '../../types/category';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({

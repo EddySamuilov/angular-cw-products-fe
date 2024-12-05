@@ -1,11 +1,11 @@
 export interface Category {
   id: string;
-  type: CategoryTypes;
+  type: CategoryType;
   description: string;
   imageUrl: string;
 }
 
-export enum CategoryTypes {
+export enum CategoryType {
   ELECTRONICS,
   CLOTHES,
   BOOKS,

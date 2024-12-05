@@ -6,8 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SlicePipe implements PipeTransform {
   transform(value: string, maxCharacterCount: number): unknown {
-    console.log({value, maxCharCount: maxCharacterCount});
-
     const dots = value.length > maxCharacterCount ? '...' : '';
     return `${value.substring(0, maxCharacterCount)}${dots}`;
   }

@@ -4,30 +4,30 @@
       <h2>Login Form</h2>
 
       <p class="field field-icon">
-        <label for="email">
+        <label for="username">
           <span>
             <i class="fas fa-envelope"></i>
           </span>
         </label>
         <input
-          [class]="hasEmailErrors(emailInput) ? 'input-error' : ''"
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Enter your email..."
+          [class]="hasUsernameErrors(usernameInput) ? 'input-error' : ''"
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Enter your username..."
           ngModel
-          #emailInput="ngModel"
+          #usernameInput="ngModel"
           required
         />
       </p>
 
-      @if (emailInput.touched) {
-          @if (emailInput.errors?.['required']) {
-            <p class="error">Email is required!</p>
+      @if (usernameInput.touched) {
+          @if (usernameInput.errors?.['required']) {
+            <p class="error">Username is required!</p>
           }
-          @if (emailInput.errors?.['emailValidator']) {
+          <!-- @if (usernameInput.errors?.['emailValidator']) {
             <p class="error">Email is not valid!</p>
-          }
+          } -->
       }
 
       <p class="field field-icon">
