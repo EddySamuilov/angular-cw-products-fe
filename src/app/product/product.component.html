@@ -1,5 +1,9 @@
 <section>
   <h2>Products</h2>
+  @if (isLoading) {
+    <app-loader />
+  } @else {
+    
   <article class="products">
     @for (product of products; track $index) {
     <article class="product">
@@ -9,7 +13,7 @@
       </header>
       <article class="product-content">
         <p class="product-content-info">
-          Title: {{ product.title }}
+          Title: {{ product.title | titlecase }}
         </p>
         <p class="product-content-info">
           Description: {{ product.description.length > 50 ? product.description.substring(0, 50) : product.description }}
@@ -32,4 +36,5 @@
     </article>
   }
   </article>
+  }
 </section>
