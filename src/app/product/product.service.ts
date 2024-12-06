@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product, ProductAdd, ProductUpsert } from '../types/product';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class ProductService {
 
   // product: Product | null = null;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService: UserService) {
     // this.product$.subscribe((product) => {
     //   this.product = product as Product;
     // })
@@ -34,8 +35,16 @@ export class ProductService {
   }
 
   addProduct(product: ProductAdd): Observable<number> {
+    const currentUser = this.userService.user?.username;
+    if (!currentUser) {
+      throw new Error('User is not logged in');
+    }
+
+    const productWithUser = { ...product, username: currentUser };
+    console.log(productWithUser);
+    
     return this.http
-      .post<number>('/api/products/add', product);
+      .post<number>('/api/products/add', productWithUser);
   }
 
   updateProduct(product: Product): Observable<Product> {
