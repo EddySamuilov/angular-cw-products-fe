@@ -3,7 +3,6 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
   import { NgClass } from '@angular/common';
 import { UserService } from '../user.service';
-import { UserLogin } from '../../types/user';
 
 @Component({
   selector: 'app-login',

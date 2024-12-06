@@ -37,6 +37,11 @@ export const routes: Routes = [
     loadComponent: () => import('./user/register/register.component').then((c) => c.RegisterComponent),
     canActivate: [guestGuard]
   },
+  { 
+    path: 'profile',
+    loadComponent: () => import('./user/profile/profile.component').then((c) => c.ProfileComponent),
+    canActivate: [authGuard]
+  },
   {
     path: 'logout',
     loadComponent: () => import('./user/logout/logout.component').then((c) => c.LogoutComponent),

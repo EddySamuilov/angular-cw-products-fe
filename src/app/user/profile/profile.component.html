@@ -1,0 +1,94 @@
+<section>
+  <h2>Welcome to your profile, {{user.firstName}}</h2>
+  
+@if (isEditMode) {
+  <ng-container>
+    <form [formGroup]="editForm" (ngSubmit)="onEditProfile($event)" >
+      <article class="profile">
+        <header>  
+          <img [src]="user.imageURL" alt="no-img">
+        </header>
+
+        <article class="profile-conten  t">
+          <p class="profile-content-info">Username:</p>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value="username"
+            formControlName="username"
+          />
+
+          <p class="profile-content-info">First name:</p>
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            value="firstName"
+            formControlName="firstName"
+          />
+
+          <p class="profile-content-info">Last name:</p>
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            value="lastName"
+            formControlName="lastName"
+          />
+
+          <p class="profile-content-info">Email:</p>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value="email"
+            formControlName="email"
+          />
+
+          <p class="profile-content-info">Image url:</p>
+          <input
+            type="text"
+            name="imageURL"
+            id="imageURL"
+            value="imageURL"
+            formControlName="imageURL"
+          />
+          
+          <p class="profile-content-info">Created at: {{ user.created | elapsedTime }}</p>
+          <p class="profile-content-info">Updated at: {{ user.modified | elapsedTime }}</p>
+
+        </article>
+        <footer>
+          <article class="profile-btn-cta">
+            <button class="btn profile-btn green-btn">Save</button>
+            <button class="btn profile-btn red-btn" (click)="triggerEditMode($event)">Cancel</button>
+          </article>
+        </footer>
+      </article>
+    </form>
+  </ng-container>
+} @else {
+  <ng-container >
+    <article class="profile">
+      <header>
+        <img [src]="user.imageURL" alt="no-img">
+      </header>
+      <article class="profile-content">
+        <p class="profile-content-info">Username: {{ user.username }}</p>
+        <p class="profile-content-info">First name: {{ user.firstName }}</p>
+        <p class="profile-content-info">Last name: {{ user.lastName }}</p>
+        <p class="profile-content-info">Email: {{ user.email }}</p>
+        <p class="profile-content-info">Created at: {{ user.created | elapsedTime }}</p>
+        <p class="profile-content-info">Updated at: {{ user.modified | elapsedTime }}</p>
+      </article>
+      <footer>
+        <article class="profile-btn-cta">
+          <button class="btn profile-btn green-btn" (click)="triggerEditMode($event)">Edit</button>
+          <!-- <button class="btn profile-btn red-btn" (click)="onDelete(product.id)">Delete</button> -->
+        </article>
+      </footer>
+    </article>
+  </ng-container>
+}
+</section>

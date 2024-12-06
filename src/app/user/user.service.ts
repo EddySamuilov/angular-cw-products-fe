@@ -2,17 +2,17 @@ import { Injectable, OnDestroy } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
-import { UserLogin, UserRegister } from '../types/user';
+import { User, UserLogin, UserRegister } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService implements OnDestroy {
-  private user$$ = new BehaviorSubject<UserLogin | UserRegister | null>(null);
+  private user$$ = new BehaviorSubject<User | UserLogin | UserRegister | null>(null);
   private user$ = this.user$$.asObservable();
   private userSubscription: Subscription | null = null;
 
-  user: UserLogin | UserRegister | null = null;
+  user: User | UserLogin | UserRegister | null = null;
 
   get isLogged(): boolean {
     return !!this.user;
@@ -33,6 +33,20 @@ export class UserService implements OnDestroy {
   register(registerRequest: UserRegister): Observable<UserRegister> {
     return this.http
       .post<UserRegister>('/api/users/register', registerRequest)
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  getUserProfile(): Observable<User> {
+    const url = `/api/users/profile?username=${this.user?.username}`;
+    return this.http
+      .get<User>(url)
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  updateUserProfile(updateUserProfileRequest: User): Observable<User> {
+    const url = `/api/users/profile?username=${this.user?.username}`;
+    return this.http
+      .put<User>(url, updateUserProfileRequest)
       .pipe(tap((user) => this.user$$.next(user)));
   }
 

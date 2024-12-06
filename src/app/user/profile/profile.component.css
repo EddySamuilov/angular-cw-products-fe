@@ -1,0 +1,114 @@
+h2 {
+  padding: 10px;
+  color: rgb(186, 20, 100);
+  background-color: black;
+  text-align: center;
+  border-radius: 10px;
+  /* border: solid rgb(186, 20, 100) ; */
+  box-shadow: 0px 3px 8px -4px;
+}
+
+.profile {
+  background-color: white;
+  color: black;
+  border-radius: 12px;
+  margin: 25px;
+  box-shadow: -7px 10px 4px -2px;
+  text-align: center;
+  height: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile header{
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+
+  background-color: rgb(186, 20, 100);
+  color: black;
+
+  position: relative;
+  text-align: center;
+  padding: 60px 30px;
+  box-shadow: 0px 9px 8px -4px;
+}
+
+.profile header h3 {
+  text-align: center;
+  padding: 20px 20px;
+  font-size: x-large;
+}
+
+.profile header span, .profile header select {
+  background-color: black;
+  border-radius: 6px;
+  text-transform: uppercase;
+  color: white;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: small;
+}
+
+.profile-content {
+  margin: 35px;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+
+.profile-content span {
+  margin: 5px 10px;
+}
+
+.profile-content-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 0px 30px;
+}
+
+.profile-content::after, .profile-content::before {
+  content: "";
+  display: block;
+  width: 90%;
+  margin: 9px 5px;
+  height: 1px;
+  background: lightgrey;
+}
+
+.profile footer {
+  /* display: flex;
+  align-items: center;
+  justify-content: space-around; */
+  margin-left: 150px;
+  padding-bottom: 10px;
+}
+
+.profile-cta .btn {
+  font-weight: bolder;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 18px;
+}
+
+.profile img {
+  width: 450px;
+  height: 300px;
+  margin: 20px  ;
+}
+
+.green-btn {
+  margin-top: 20px;
+  color: aliceblue;
+  background-color: rgb(18, 155, 18);
+}
+
+.red-btn {
+  margin-top: 20px;
+  color: aliceblue;
+  background-color: rgb(176, 12, 12);
+}
+
