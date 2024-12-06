@@ -6,6 +6,7 @@ import { DatePipe, SlicePipe, TitleCasePipe } from '@angular/common';
 import { ElapsedTimePipe } from '../../shared/pipes/elapsed-time.pipe';
 import { Categories, Category, } from '../../types/category';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CategoryService } from '../../category/category.service';
 
 @Component({
   selector: 'app-product-details',
@@ -17,7 +18,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class ProductDetailsComponent implements OnInit {
   isEditMode = false;
   product = {} as Product;
-  categories = Categories;
+  categories: Category[] = [];
 
   editForm = new FormGroup({
     id: new FormControl(this.product.id, [Validators.required]),
@@ -33,10 +34,17 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
+    private categoryService: CategoryService,
     private router: Router,
   ) {}
 
   ngOnInit(): void {
+    this.categoryService.getCategories().subscribe({
+      next: (categories) => {
+        this.categories = categories;
+      }
+    })
+
     const productId = this.activatedRoute.snapshot.params['productId'];
     this.productService.getSingleProduct(productId).subscribe((product) => {
       this.product = product;
