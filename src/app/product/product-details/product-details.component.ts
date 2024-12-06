@@ -49,7 +49,7 @@ export class ProductDetailsComponent implements OnInit {
     this.isEditMode = !this.isEditMode;
   }
 
-  onEditProfile(event: Event): void {
+  onEditProduct(event: Event): void {
     this.product = this.editForm.value as Product;
     this.productService.updateProduct(this.editForm.value as Product).subscribe((response) => {
       this.product = response;

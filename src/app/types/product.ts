@@ -21,3 +21,11 @@ export interface ProductUpsert {
   created: string;
   modified: string;
 }
+
+export interface ProductAdd {
+  title: string;
+  description: string;
+  imageUrl: string;
+  price: number;
+  categoryType: string;
+}

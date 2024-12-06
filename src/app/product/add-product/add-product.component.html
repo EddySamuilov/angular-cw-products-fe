@@ -1,0 +1,62 @@
+
+<h2>Add product</h2>
+<form [formGroup]="addForm" (ngSubmit)="onAddProduct()" >
+  <article class="product">
+    <article class="product-content">
+      <p class="product-content-info">Category:</p>
+      <select
+        type="text"
+        id="categoryType"
+        name="categoryType"
+        value="categoryType"
+        formControlName="categoryType">
+        
+        @for (category of categoryTypes; track $index) {
+          <option [ngValue]="category">{{ category }}</option>
+        }
+      </select>
+
+      <p class="product-content-info">Title:</p>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        value="title"
+        formControlName="title"
+      />
+
+      <p class="product-content-info">Description:</p>
+      <input
+        type="text"
+        name="description"
+        id="description"
+        value="description"
+        formControlName="description"
+      />
+
+      <p class="product-content-info">Image url:</p>
+      <input
+        type="text"
+        name="imageUrl"
+        id="imageUrl"
+        value="imageUrl"
+        formControlName="imageUrl"
+      />
+      
+      <p class="product-content-info">Price:</p>
+      <input
+        type="number"
+        name="price"
+        id="price"
+        value="price"
+        formControlName="price"
+      />
+
+    </article>
+    <footer>
+      <article class="product-btn-cta">
+        <button class="btn product-btn green-btn">Add product</button>
+      </article>
+    </footer>
+  </article>
+</form>

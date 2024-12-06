@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product, ProductUpsert } from '../types/product';
+import { Product, ProductAdd, ProductUpsert } from '../types/product';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Injectable({
@@ -31,6 +31,11 @@ export class ProductService {
     return this.http
       .get<Product>(`/api/products/${productId}`)
       .pipe(tap((product) => this.product$$.next(product)));
+  }
+
+  addProduct(product: ProductAdd): Observable<number> {
+    return this.http
+      .post<number>('/api/products/add', product);
   }
 
   updateProduct(product: Product): Observable<Product> {
