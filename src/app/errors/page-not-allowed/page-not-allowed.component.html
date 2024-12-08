@@ -1,0 +1,19 @@
+<div class="content">
+  <header class="err-head">
+    <h2>BEWARE!</h2>
+    <h3>Do not be silly!</h3>
+    <h4>You are not allowed to do that!</h4>
+  </header>
+
+  <body>
+    <section>
+      @if (isLoggedIn) {  
+        <p class="err-msg">Don't worry.. You can try visit different page!</p>
+        <button class="err-btn btn" routerLink="/home">Back to homepage</button> 
+      } @else {
+        <p class="err-msg">Don't worry.. You can login and try again!</p>
+        <button class="err-btn btn" routerLink="/login">To login page</button> 
+      }
+    </section>
+  </body>
+  </div>

@@ -15,7 +15,7 @@ export class UserService implements OnDestroy {
   user: User | UserLogin | UserRegister | null = null;
 
   get isLogged(): boolean {
-    return !!this.user;
+    return localStorage.getItem('token') !== null;
   }
 
   constructor(private http: HttpClient) {

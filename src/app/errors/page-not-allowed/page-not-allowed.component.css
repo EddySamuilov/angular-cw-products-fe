@@ -1,0 +1,19 @@
+.err-head {
+  align-items: center;
+  text-align: center;
+}
+
+.err-msg {
+  align-items: center;
+  text-align: center;
+}
+
+.err-outcome {
+  align-items: center;
+  text-align: center;
+}
+
+
+.err-btn {
+  margin-left: 44%;
+}

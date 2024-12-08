@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './user/login/login.component';
 import { authGuard } from './guards/auth.guard';
 import { guestGuard } from './guards/guest.guard';
+import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
+import { PageNotAllowedComponent } from './errors/page-not-allowed/page-not-allowed.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -52,4 +54,11 @@ export const routes: Routes = [
     loadComponent: () => import('./user/logout/logout.component').then((c) => c.LogoutComponent),
     canActivate: [authGuard],
   },
+  {
+    path: '404', component: PageNotFoundComponent,  
+    // loadComponent: () => import('./errors/page-not-found/page-not-found.component').then((c) => c.PageNotFoundComponent),
+    // canActivate: [authGuard],
+  },
+  { path: 'not-allowed', component: PageNotAllowedComponent },
+  { path: '**', redirectTo: '/404' },
 ];
