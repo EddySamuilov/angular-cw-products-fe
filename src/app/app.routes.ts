@@ -2,8 +2,6 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './user/login/login.component';
 import { authGuard } from './guards/auth.guard';
 import { guestGuard } from './guards/guest.guard';
-import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
-import { PageNotAllowedComponent } from './errors/page-not-allowed/page-not-allowed.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -35,6 +33,11 @@ export const routes: Routes = [
     canActivate: [authGuard] 
   },
   { 
+    path: 'profile',
+    loadComponent: () => import('./user/profile/profile.component').then((c) => c.ProfileComponent),
+    canActivate: [authGuard]
+  },
+  { 
     path: 'login',
     component: LoginComponent,
     canActivate: [guestGuard]
@@ -44,21 +47,18 @@ export const routes: Routes = [
     loadComponent: () => import('./user/register/register.component').then((c) => c.RegisterComponent),
     canActivate: [guestGuard]
   },
-  { 
-    path: 'profile',
-    loadComponent: () => import('./user/profile/profile.component').then((c) => c.ProfileComponent),
-    canActivate: [authGuard]
-  },
   {
     path: 'logout',
     loadComponent: () => import('./user/logout/logout.component').then((c) => c.LogoutComponent),
     canActivate: [authGuard],
   },
   {
-    path: '404', component: PageNotFoundComponent,  
-    // loadComponent: () => import('./errors/page-not-found/page-not-found.component').then((c) => c.PageNotFoundComponent),
-    // canActivate: [authGuard],
+    path: 'not-found',
+    loadComponent: () => import('./errors/page-not-found/page-not-found.component').then((c) => c.PageNotFoundComponent),
   },
-  { path: 'not-allowed', component: PageNotAllowedComponent },
-  { path: '**', redirectTo: '/404' },
+  { 
+    path: 'not-allowed',
+    loadComponent: () => import('./errors/page-not-allowed/page-not-allowed.component').then((c) => c.PageNotAllowedComponent),
+  },
+  { path: '**', redirectTo: '/not-found' },
 ];

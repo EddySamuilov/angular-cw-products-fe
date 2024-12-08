@@ -6,13 +6,10 @@ export const guestGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: 
   const userService = inject(UserService);
   const router = inject(Router);
   
-  console.log('THIS IS THE GUEST GUARD');
-  console.log(userService.isLogged);
-  
   if (userService.isLogged) {
     router.navigateByUrl('/not-allowed')
     return false;
   }
-  
+
   return true;
 };  
