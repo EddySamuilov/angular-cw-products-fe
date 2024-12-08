@@ -8,11 +8,29 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/home">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/products">Products</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" role="button">Products</a>
+        <img class="nav-adj" src="/nav/nav-arr-down.png">
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" routerLink="/products/add">Add Product</a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/products">View all Products</a>
+          </li>
+        </ul>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/categories">Categories</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" role="button">Categories</a>
+        <img class="nav-adj" src="/nav/nav-arr-down.png">
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" routerLink="/categories/add">Add Category</a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/categories">View all Categories</a>
+          </li>
+        </ul>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/contacts">Contacts</a>

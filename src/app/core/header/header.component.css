@@ -50,3 +50,42 @@ header nav ul {
 .login-btn {
   margin-left: 33px;
 }
+
+.nav-item.dropdown {
+  position: relative;
+}
+
+.nav-item .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color:  rgb(186, 20, 100);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 10;
+  min-width: 100px;
+}
+
+.nav-item .dropdown-menu .dropdown-item {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.nav-item .dropdown-menu .dropdown-item:hover {
+  background-color: cyan;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block; /* Show dropdown on hover */
+}
+
+.nav-adj {
+  position: absolute;
+  bottom: -10%;
+}
