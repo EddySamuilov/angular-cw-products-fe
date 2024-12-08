@@ -120,13 +120,15 @@ h3:hover {
   color: rgb(189, 13, 13);
 }
 
-.product-cta .btn {
+.product-cta {
   font-weight: bolder;
-  padding-left: 18px;
-  padding-right: 18px;
 }
 
 .product img {
   width: 450px;
   height: 200px;
+}
+
+.btn {
+  margin: 2% 46%
 }
