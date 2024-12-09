@@ -12,13 +12,13 @@ h2 {
   background-color: white;
   color: black;
   border-radius: 12px;
-  margin: 25px;
+  margin: 25px auto;
   box-shadow: -7px 10px 4px -2px;
   text-align: center;
-  height: 750px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 80%;
+  max-width: 700px;
+  overflow: hidden;
+  margin-bottom: 5%;
 }
 
 .product header{
@@ -35,6 +35,7 @@ h2 {
 }
 
 .product header h3 {
+  margin: 0;
   text-align: center;
   padding: 20px 20px;
   font-size: x-large;
@@ -47,13 +48,16 @@ h2 {
   color: white;
   padding: 8px 12px;
   position: absolute;
-  top: 0;
+  top: 10px;
   left: 10px;
   font-size: small;
 }
 
 .product-content {
-  margin: 25px;
+  margin: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding-top: 20px;
   flex-wrap: wrap;
 }
@@ -63,57 +67,71 @@ h2 {
 }
 
 .product-content-info {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  font-size: small;
+  text-align: left;
+  font-weight: bold;
   flex-wrap: wrap;
   padding: 0px 30px;
 }
 
-.product-content::after, .product-content::before {
-  content: "";
-  display: block;
-  width: 90%;
-  margin: 9px 5px;
-  height: 1px;
-  background: lightgrey;
+.product-btn {
+  font-size: 16px;
+  font-weight: bolder;
+  padding: 10px 20px;
 }
 
 .product footer {
-  /* display: flex;
-  align-items: center;
-  justify-content: space-around; */
-  margin-left: 150px;
-  padding-bottom: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #eee;
+  text-align: center;
 }
 
-/* .product-price {
-  font-weight: bold;
-  font-size: 24px;
-  color: rgb(189, 13, 13);
-} */
-
-.product-cta .btn {
-  font-weight: bolder;
-  padding-left: 18px;
-  padding-right: 18px;
-  padding-top: 18px;
-}
-
-.product img {
-  width: 450px;
-  height: 300px;
+.green-btn:hover {
+  background-color: rgb(15, 130, 15);
 }
 
 .green-btn {
-  margin-top: 20px;
   color: aliceblue;
   background-color: rgb(18, 155, 18);
+  border: none;
+  transition: background-color 0.3s ease;
 }
 
-.red-btn {
-  margin-top: 20px;
-  color: aliceblue;
-  background-color: rgb(176, 12, 12);
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
+input:focus, select:focus {
+  border-color: rgb(186, 20, 100);
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(186, 20, 100, 0.5);
+}
+
+
+/* General error message styling */
+.error-message {
+  color: red;
+  font-size: 14px;
+  background-color: black;
+  padding: 7px 1px;
+  border: 1px solid red;
+  border-radius: 16px;
+  box-shadow: 0px 2px 4px rgba(255, 0, 0, 0.1);
+  display: inline;
+  text-align: center;
+}
+
+/* Additional hover effect for better interaction */
+.error-message:hover {
+  background-color: rgb(186, 20, 100);
+  color: black;
+  border-color: black;
+  box-shadow: 0px 3px 6px rgba(255, 0, 0, 0.2);
+}

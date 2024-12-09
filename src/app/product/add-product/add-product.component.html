@@ -3,59 +3,72 @@
 <form [formGroup]="addForm" (ngSubmit)="onAddProduct()" >
   <article class="product">
     <article class="product-content">
-      <p class="product-content-info">Category:</p>
-      <select
-        type="text"
-        id="categoryType"
-        name="categoryType"
-        value="categoryType"
-        formControlName="categoryType">
-        
-        @for (category of categoryTypes; track $index) {
-          <option [ngValue]="category">{{ category }}</option>
+      <p class="product-content-info">*Category:
+        <select
+          type="text"
+          id="categoryType"
+          name="categoryType"
+          value="categoryType"
+          formControlName="categoryType">
+          
+          @for (category of categoryTypes; track $index) {
+            <option [ngValue]="category">{{ category }}</option>
+          }
+        </select>
+      </p>
+      @if (addForm.get('categoryType')?.touched) {
+        @if (addForm.get('categoryType')?.errors?.['required']) {
+          <span class="error-message">Category must be selected!</span>
         }
-      </select>
+      }
 
-      <p class="product-content-info">Title:</p>
-      <input
-        type="text"
-        name="title"
-        id="title"
-        value="title"
-        formControlName="title"
-      />
+      <p class="product-content-info">*Title:
+        <input type="text" name="title" id="title" value="title" formControlName="title"/>
+      </p>
+      @if (addForm.get('title')?.touched) {
+        @if (addForm.get('title')?.errors?.['required']) {
+          <span class="error-message">Title is required!</span>
+        }
+        @if (addForm.get('title')?.errors?.['minlength']) {
+          <span class="error-message">Title must be at least 2 characters!</span>
+        }
+      }
 
-      <p class="product-content-info">Description:</p>
-      <input
-        type="text"
-        name="description"
-        id="description"
-        value="description"
-        formControlName="description"
-      />
 
-      <p class="product-content-info">Image url:</p>
-      <input
-        type="text"
-        name="imageUrl"
-        id="imageUrl"
-        value="imageUrl"
-        formControlName="imageUrl"
-      />
+      <p class="product-content-info">*Description:
+        <input type="text" name="description" id="description" value="description" formControlName="description"/>
+      </p>
+      @if (addForm.get('description')?.touched) {
+        @if (addForm.get('description')?.errors?.['required']) {
+          <span class="error-message">Description is required!</span>
+        }
+        @if (addForm.get('description')?.errors?.['minlength'] || addForm.get('description')?.errors?.['maxlength']) {
+          <span class="error-message">Description must be at least 5 and cannot exceed 255 characters!</span>
+        }
+      }
+
       
-      <p class="product-content-info">Price:</p>
-      <input
-        type="number"
-        name="price"
-        id="price"
-        value="price"
-        formControlName="price"
-      />
+      <p class="product-content-info">Image url:
+        <input type="text" name="imageUrl" id="imageUrl" value="imageUrl" formControlName="imageUrl"/>
+      </p>
+      
+
+      <p class="product-content-info">*Price:
+        <input type="number" name="price" id="price" value="price" formControlName="price" />
+      </p>
+      @if (addForm.get('price')?.touched) {
+        @if (addForm.get('price')?.errors?.['required']) {
+          <span class="error-message">Price is required!</span>
+        }
+        @if (addForm.get('price')?.errors?.['invalidPrice']) {
+          <span class="error-message">Price must be a positive number!</span>
+        }
+      }
 
     </article>
     <footer>
       <article class="product-btn-cta">
-        <button class="btn product-btn green-btn">Add product</button>
+        <button class="btn product-btn green-btn">+ Add product</button>
       </article>
     </footer>
   </article>

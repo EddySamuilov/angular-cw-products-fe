@@ -62,7 +62,7 @@
 
       @if (registerForm.get('email')?.touched) { 
         @if(registerForm.get('email')?.errors?.['required']) {
-          <p class="error">Email is REQUIRED!</p>
+          <p class="error">Email is required!</p>
         } 
         @if (registerForm.get('email')?.errors?.['invalidEmail']) {
           <p class="error">Invalid email!</p>

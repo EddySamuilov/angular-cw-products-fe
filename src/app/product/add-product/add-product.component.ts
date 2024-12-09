@@ -5,6 +5,7 @@ import { Categories, Category, CategoryType } from '../../types/category';
 import { Product, ProductAdd } from '../../types/product';
 import { ProductService } from '../product.service';
 import { CategoryService } from '../../category/category.service';
+import { priceValidator } from '../../utils/price.validator';
 
 @Component({
   selector: 'app-add-product',
@@ -18,10 +19,10 @@ export class AddProductComponent implements OnInit {
   categoryTypes: CategoryType[] = [];
 
   addForm = new FormGroup({
-    title: new FormControl('', [Validators.required]),
+    title: new FormControl('', [Validators.required, Validators.minLength(2)]),
     description: new FormControl('', [Validators.required, Validators.minLength(5)]),
     imageUrl: new FormControl(''),
-    price: new FormControl(0, [Validators.required]),
+    price: new FormControl(0, [Validators.required, priceValidator()]),
     categoryType: new FormControl('', [Validators.required]),
   })
 
