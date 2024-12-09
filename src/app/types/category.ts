@@ -5,6 +5,12 @@ export interface Category {
   imageUrl: string;
 }
 
+export interface CategoryAdd {
+  type: string;
+  description: string;
+  imageUrl: string;
+}
+
 export enum CategoryType {
   ELECTRONICS,
   CLOTHES,

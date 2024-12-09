@@ -20,7 +20,7 @@ export class AddProductComponent implements OnInit {
 
   addForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    description: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    description: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]),
     imageUrl: new FormControl(''),
     price: new FormControl(0, [Validators.required, priceValidator()]),
     categoryType: new FormControl('', [Validators.required]),
@@ -42,6 +42,10 @@ export class AddProductComponent implements OnInit {
   }
 
   onAddProduct(): void {
+    if (this.addForm.invalid) {
+      return;
+    }
+    
     this.productService.addProduct(this.addForm.value as ProductAdd).subscribe({
       next: (data) => {
         this.router.navigate(['/products', data]);

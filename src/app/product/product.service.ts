@@ -41,7 +41,6 @@ export class ProductService {
     }
 
     const productWithUser = { ...product, username: currentUser };
-    console.log(productWithUser);
     
     return this.http
       .post<number>('/api/products/add', productWithUser);

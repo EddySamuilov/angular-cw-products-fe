@@ -4,7 +4,7 @@ import { authGuard } from './guards/auth.guard';
 import { guestGuard } from './guards/guest.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { 
     path: 'home',
     loadComponent: () => import('./home/home.component').then((c) => c.HomeComponent),
@@ -28,9 +28,18 @@ export const routes: Routes = [
     },
   ]},
   { 
-    path: 'categories',
-    loadComponent: () => import('./category/category.component').then((c) => c.CategoryComponent),
-    canActivate: [authGuard] 
+    path: 'categories', children: [
+      { 
+        path: '',
+        loadComponent: () => import('./category/category.component').then((c) => c.CategoryComponent),
+        canActivate: [authGuard] 
+      },
+      { 
+        path: 'add',
+        loadComponent: () => import('./category/add-category/add-category.component').then((c) => c.AddCategoryComponent),
+        canActivate: [authGuard]
+      },
+    ]
   },
   { 
     path: 'profile',

@@ -8,7 +8,7 @@ h2 {
   box-shadow: 0px 3px 8px -4px;
 }
 
-.product {
+.category {
   background-color: white;
   color: black;
   border-radius: 12px;
@@ -21,7 +21,7 @@ h2 {
   margin-bottom: 5%;
 }
 
-.product header{
+.category header{
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 
@@ -34,14 +34,14 @@ h2 {
   box-shadow: 0px 9px 8px -4px;
 }
 
-.product header h3 {
+.category header h3 {
   margin: 0;
   text-align: center;
   padding: 20px 20px;
   font-size: x-large;
 }
 
-.product header span, .product header select {
+.category header span, .category header select {
   background-color: black;
   border-radius: 6px;
   text-transform: uppercase;
@@ -53,7 +53,7 @@ h2 {
   font-size: small;
 }
 
-.product-content {
+.category-content {
   margin: 20px 30px;
   display: flex;
   flex-direction: column;
@@ -62,11 +62,11 @@ h2 {
   flex-wrap: wrap;
 }
 
-.product-content span {
+.category-content span {
   margin: 5px 10px;
 }
 
-.product-content-info {
+.category-content-info {
   font-size: small;
   text-align: left;
   font-weight: bold;
@@ -74,13 +74,13 @@ h2 {
   padding: 0px 30px;
 }
 
-.product-btn {
+.category-btn {
   font-size: 16px;
   font-weight: bolder;
   padding: 10px 20px;
 }
 
-.product footer {
+.category footer {
   padding: 20px;
   background-color: #f9f9f9;
   border-top: 1px solid #eee;
@@ -113,7 +113,6 @@ input:focus, select:focus {
   outline: none;
   box-shadow: 0px 0px 5px rgba(186, 20, 100, 0.5);
 }
-
 
 .error-message {
   color: red;

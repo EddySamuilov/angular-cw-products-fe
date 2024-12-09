@@ -1,0 +1,40 @@
+
+<h2>Add Category</h2>
+<form [formGroup]="addForm" (ngSubmit)="onAddCategory()" >
+  <article class="category">
+    <article class="category-content">
+      <p class="category-content-info">*Title:
+        <input type="text" name="type" id="type" value="type" formControlName="type"/>
+      </p>
+      @if (addForm.get('type')?.touched) {
+        @if (addForm.get('type')?.errors?.['required']) {
+          <span class="error-message">Category type is required!</span>
+        }
+      }
+
+
+      <p class="category-content-info">*Description:
+        <input type="text" name="description" id="description" value="description" formControlName="description"/>
+      </p>
+      @if (addForm.get('description')?.touched) {
+        @if (addForm.get('description')?.errors?.['required']) {
+          <span class="error-message">Description is required!</span>
+        }
+        @if (addForm.get('description')?.errors?.['minlength'] || addForm.get('description')?.errors?.['maxlength']) {
+          <span class="error-message">Description must be at least 5 and cannot exceed 255 characters!</span>
+        }
+      }
+
+      
+      <p class="category-content-info">Image url:
+        <input type="text" name="imageUrl" id="imageUrl" value="imageUrl" formControlName="imageUrl"/>
+      </p>
+      
+    </article>
+    <footer>
+      <article class="category-btn-cta">
+        <button class="btn category-btn green-btn">+ Add product</button>
+      </article>
+    </footer>
+  </article>
+</form>
