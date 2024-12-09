@@ -41,8 +41,6 @@ export class AddProductComponent implements OnInit {
   }
 
   onAddProduct(): void {
-    console.log(this.addForm.value);
-    
     this.productService.addProduct(this.addForm.value as ProductAdd).subscribe({
       next: (data) => {
         this.router.navigate(['/products', data]);

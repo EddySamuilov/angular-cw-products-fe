@@ -35,18 +35,20 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/contacts">Contacts</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/profile">Profile </a>
-      </li>
 
-      <li class="nav-item login-nav-item">
         @if (isUserLoggedIn) {
-          <app-logout />
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/profile">Profile </a>
+          </li>
+          <li class="nav-item login-nav-item">
+            <app-logout />
+          </li>
         } @else {
-          <button class="btn login-btn" routerLink="/login">Login</button>
-          <button class="btn register-btn" routerLink="/register">Register</button>
+          <li class="nav-item login-nav-item">
+            <button class="btn login-btn" routerLink="/login">Login</button>
+            <button class="btn register-btn" routerLink="/register">Register</button>
+          </li>
         }
-      </li>
     </ul>
 
   </nav>
