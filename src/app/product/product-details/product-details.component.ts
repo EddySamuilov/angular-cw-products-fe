@@ -7,6 +7,7 @@ import { ElapsedTimePipe } from '../../shared/pipes/elapsed-time.pipe';
 import { Categories, Category, } from '../../types/category';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CategoryService } from '../../category/category.service';
+import { UserService } from '../../user/user.service';
 
 @Component({
   selector: 'app-product-details',
@@ -29,12 +30,14 @@ export class ProductDetailsComponent implements OnInit {
     category: new FormControl(this.product.category, [Validators.required]),
     created: new FormControl(this.product.created),
     modified: new FormControl(this.product.modified),
+    createdBy: new FormControl(this.product.createdBy),
   })
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private categoryService: CategoryService,
+    private userService: UserService,
     private router: Router,
   ) {}
 
@@ -52,8 +55,15 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+  get isAbleToTriggerEditMode() {
+    const createdBy = this.editForm.get('createdBy');
+    const currentUser = this.userService.user?.username;
+    
+    return createdBy?.value === currentUser;
+  }
+
   triggerEditMode(event: Event) {
-    event.preventDefault()
+    event.preventDefault();
     this.isEditMode = !this.isEditMode;
   }
 

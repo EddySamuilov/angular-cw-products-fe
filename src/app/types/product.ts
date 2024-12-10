@@ -9,6 +9,7 @@ export interface Product {
   category: Category;
   created: string;
   modified: string;
+  createdBy: string;
 }
 
 export interface ProductUpsert {
