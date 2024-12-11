@@ -129,6 +129,12 @@ h3:hover {
   height: 200px;
 }
 
-.btn {
-  margin: 2% 46%
+.mini-head {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: lightgrey;
+  padding: 15px;
+  
+  box-shadow: 8px 10px 8px -4px black;
 }

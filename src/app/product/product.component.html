@@ -1,12 +1,14 @@
 <section>
   <h2>Products</h2>
-  <button class="btn" routerLink="/products/add">Add product</button>
+  <div class="mini-head">
+    <app-filter (filterItems)="onFilterUpdated($event)"/>
+    <button class="btn" routerLink="/products/add">+ Add product</button>
+  </div>
   @if (isLoading) {
     <app-loader />
   } @else {
-    
   <article class="products">
-    @for (product of products; track $index) {
+    @for (product of filteredProducts; track $index) {
     <article class="product">
       <header>
         <span> {{ product.category.type }} </span>
