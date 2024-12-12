@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
@@ -9,25 +9,30 @@ import { User, UserLogin, UserRegister } from '../types/user';
 })
 export class UserService implements OnDestroy {
   private user$$ = new BehaviorSubject<User | UserLogin | UserRegister | null>(null);
-  private user$ = this.user$$.asObservable();
-  private userSubscription: Subscription | null = null;
 
-  user: User | UserLogin | UserRegister | null = null;
+  user: User | null = null;
 
   get isLogged(): boolean {
-    return localStorage.getItem('token') !== null;
+    return this.user$$.value !== null;
   }
 
   constructor(private http: HttpClient) {
-    this.userSubscription = this.user$.subscribe((user) => {
-      this.user = user;
-    })
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      this.user = JSON.parse(storedUser) as User;
+      this.user$$.next(this.user);
+    }
   }
 
   login(username: string, password: string): Observable<UserLogin> {
     return this.http
       .post<UserLogin>('/api/users/login', { username, password })
-      .pipe(tap((user) => this.user$$.next(user)));
+      .pipe(
+        tap((user) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        this.user$$.next(user);
+        }
+      ))
   }
 
   register(registerRequest: UserRegister): Observable<UserRegister> {
@@ -56,7 +61,6 @@ export class UserService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.userSubscription?.unsubscribe();
     localStorage.clear();
   }
 }

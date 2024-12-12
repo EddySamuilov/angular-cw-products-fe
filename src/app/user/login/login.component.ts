@@ -33,11 +33,9 @@ export class LoginComponent {
     
     this.userService.login( username, password ).subscribe({
       next:(response) => {
-        localStorage.setItem('token', response.token);
         this.router.navigateByUrl('/home');
       }, error:(err) => {
         this.hasLoginError = true;
-        // alert(err.error);
       }
     });
 
