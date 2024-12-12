@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Post, PostAdd } from '../types/post';
+import { Post, PostAdd, PostUpdate } from '../types/post';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { UserService } from '../user/user.service';
@@ -38,7 +38,7 @@ export class PostService {
       .post<Post>('/api/posts/add', postWithUser);
   }
 
-  updatePost(post: PostAdd): Observable<Post> {
+  updatePost(post: PostUpdate): Observable<Post> {
     const currentUser = this.userService.user?.username;
     if (!currentUser) {
       throw new Error('User is not logged in');

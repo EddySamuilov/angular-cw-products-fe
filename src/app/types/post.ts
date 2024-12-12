@@ -10,10 +10,18 @@ export interface Post {
   isDisliked?: boolean;
 }
 
-export interface PostAdd {
+export interface PostUpdate {
   id: number;
   title: string;
   description: string;
   likes: number;
   dislikes: number;
+}
+
+export interface PostAdd {
+  title: string;
+  description: string;
+  likes: number;
+  dislikes: number;
+  productId: number;
 }

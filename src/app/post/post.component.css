@@ -100,3 +100,44 @@ button:hover {
 .choosed-btn {
   background-color: rgb(207, 160, 32);
 }
+
+
+/* NEW POST CSS */
+
+.post-form {
+  margin: 20px 0;
+  padding: 16px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post-form h3 {
+  margin-bottom: 16px;
+}
+
+.post-form label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.post-form input, .post-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.post-form button {
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.post-form button:disabled {
+  background-color: #ccc;
+}
