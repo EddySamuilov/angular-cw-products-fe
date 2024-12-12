@@ -44,11 +44,8 @@ export class ProductComponent implements OnInit {
   }
 
   onFilterUpdated(filterCriteria: string): void {
-    console.log('Products BEFORE:', this.products);
-    
     this.filteredProducts = this.products.filter((product) =>
       product.title.toLowerCase().includes(filterCriteria.toLowerCase())
     );
-    console.log('Products AFTER:', this.products);
   }
 }
