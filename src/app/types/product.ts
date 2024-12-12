@@ -1,4 +1,5 @@
 import { Category } from "./category";
+import { Post } from "./post";
 
 export interface Product {
   id: number;
@@ -10,6 +11,7 @@ export interface Product {
   created: string;
   modified: string;
   createdBy: string;
+  posts: Post[];
 }
 
 export interface ProductUpsert {

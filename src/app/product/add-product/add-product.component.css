@@ -114,7 +114,6 @@ input:focus, select:focus {
   box-shadow: 0px 0px 5px rgba(186, 20, 100, 0.5);
 }
 
-
 .error-message {
   color: red;
   font-size: 14px;

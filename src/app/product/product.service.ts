@@ -11,12 +11,12 @@ export class ProductService {
   private product$$ = new BehaviorSubject<Product | ProductUpsert | null>(null);
   public product$ = this.product$$.asObservable();
 
-  // product: Product | null = null;
+  product: Product | null = null;
 
   constructor(private http: HttpClient, private userService: UserService) {
-    // this.product$.subscribe((product) => {
-    //   this.product = product as Product;
-    // })
+    this.product$.subscribe((product) => {
+      this.product = product as Product;
+    })
   }
 
   getProducts(categoryId: string | null): Observable<Product[]> {

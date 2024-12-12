@@ -8,11 +8,12 @@ import { Categories, Category, } from '../../types/category';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CategoryService } from '../../category/category.service';
 import { UserService } from '../../user/user.service';
+import { PostComponent } from '../../post/post.component';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [ReactiveFormsModule, ElapsedTimePipe, TitleCasePipe],
+  imports: [ReactiveFormsModule, ElapsedTimePipe, TitleCasePipe, PostComponent],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
 })

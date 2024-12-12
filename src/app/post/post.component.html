@@ -1,0 +1,27 @@
+@if (isLoading) {
+  <app-loader />
+} @else {
+  <div class="post-wrapper">
+    @for (post of posts; track $index) {
+      @if (post.productId === productId) {
+        <div class="post-container">
+          <div class="post-header">
+            <h3>{{ post.title }}</h3>
+          </div>
+          <div class="post-body">
+            <p>{{ post.description }}</p>
+          </div>
+          <div class="post-info">
+            <div class="post-creator">
+              <p>Posted by: {{ post.createdBy }}</p>
+            </div>
+            <div class="post-footer">
+              <button class="like-btn btn" (click)="onLike(post)">👍 {{ post.likes }}</button>
+              <button class="dislike-btn btn" (click)="onDislike(post)">👎 {{ post.dislikes }}</button>
+            </div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+}
