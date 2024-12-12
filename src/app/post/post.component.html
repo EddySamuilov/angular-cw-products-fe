@@ -2,8 +2,11 @@
   <app-loader />
 } @else {
   <div class="post-wrapper">
-    @for (post of posts; track $index) {
-      @if (post.productId === productId) {
+    <div class="add-btn">
+      <button class="btn" routerLink="/posts/add">+ Create post</button>
+    </div>
+    @for (post of product.posts; track $index) {
+      @if (post.productId === product.id) {
         <div class="post-container">
           <div class="post-header">
             <h3>{{ post.title }}</h3>
@@ -16,8 +19,16 @@
               <p>Posted by: {{ post.createdBy }}</p>
             </div>
             <div class="post-footer">
-              <button class="like-btn btn" (click)="onLike(post)">👍 {{ post.likes }}</button>
-              <button class="dislike-btn btn" (click)="onDislike(post)">👎 {{ post.dislikes }}</button>
+              <button 
+                [disabled]="post.isLiked"
+                [class]="post.isLiked ? 'choosed-btn' : 'like-btn btn'"
+                (click)="onLike(post.title)">👍 {{ post.likes }}
+              </button>
+              <button 
+                [disabled]="post.isDisliked"
+                [class]="post.isDisliked ? 'choosed-btn' : 'dislike-btn btn'"
+                (click)="onDislike(post.title)">👎 {{ post.dislikes }}
+              </button>
             </div>
           </div>
         </div>

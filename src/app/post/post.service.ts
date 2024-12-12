@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Post } from '../types/post';
+import { Post, PostAdd } from '../types/post';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { UserService } from '../user/user.service';
@@ -13,7 +13,7 @@ export class PostService {
 
   constructor(
     private http: HttpClient,
-    private userService: UserService
+    private userService: UserService,
   ) {}
 
   getPosts(): Observable<Post[]> {
@@ -26,23 +26,30 @@ export class PostService {
       .pipe(tap((post) => this.post$$.next(post)));
   }
 
-  // addProduct(product: ProductAdd): Observable<number> {
-  //   const currentUser = this.userService.user?.username;
-  //   if (!currentUser) {
-  //     throw new Error('User is not logged in');
-  //   }
+  addPost(post: PostAdd): Observable<Post> {
+    const currentUser = this.userService.user?.username;
+    if (!currentUser) {
+      throw new Error('User is not logged in');
+    }
 
-  //   const productWithUser = { ...product, username: currentUser };
+    const postWithUser = { ...post, username: currentUser };
     
-  //   return this.http
-  //     .post<number>('/api/products/add', productWithUser);
-  // }
+    return this.http
+      .post<Post>('/api/posts/add', postWithUser);
+  }
 
-  // updateProduct(product: Product): Observable<Product> {
-  //   return this.http
-  //     .put<Product>(`/api/products/${product.id}`, product)
-  //     .pipe(tap((product) => this.post$$.next(product)));
-  // }
+  updatePost(post: PostAdd): Observable<Post> {
+    const currentUser = this.userService.user?.username;
+    if (!currentUser) {
+      throw new Error('User is not logged in');
+    }
+
+    const postWithUser = { ...post, username: currentUser };
+
+    return this.http
+      .put<Post>(`/api/posts/${post.id}`, postWithUser)
+      .pipe(tap((post) => this.post$$.next(post)));
+  }
 
   // deleteProduct(productId: number): Observable<Product> {
   //   return this.http
