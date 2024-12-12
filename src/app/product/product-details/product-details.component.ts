@@ -32,6 +32,7 @@ export class ProductDetailsComponent implements OnInit {
     created: new FormControl(this.product.created),
     modified: new FormControl(this.product.modified),
     createdBy: new FormControl(this.product.createdBy),
+    posts: new FormControl(),
   })
 
   constructor(

@@ -64,7 +64,7 @@
   <ng-container >
     <article class="product">
       <header>
-        <span> {{ product.category.type }} </span>
+        <span> {{ product.category?.type }} </span>
         <img [src]="product.imageUrl" alt="product-img" />
       </header>
       <article class="product-content">

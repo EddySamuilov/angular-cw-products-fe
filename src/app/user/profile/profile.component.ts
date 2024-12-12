@@ -49,10 +49,12 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUserProfile(this.editForm.value as User).subscribe({
       next: (user) => {
         this.user = user;
-        this.triggerEditMode(event);
       },
       error: (err) => {
         console.log("Invalid request", err);
+      },
+      complete: () => {
+        this.triggerEditMode(event);
       }
     });
   }
