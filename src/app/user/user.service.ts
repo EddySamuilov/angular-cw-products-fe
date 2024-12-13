@@ -13,7 +13,7 @@ export class UserService implements OnDestroy {
   user: User | null = null;
 
   get isLogged(): boolean {
-    return this.user$$.value !== null;
+    return this.user$$.value !== null;  
   }
 
   constructor(private http: HttpClient) {
@@ -38,14 +38,11 @@ export class UserService implements OnDestroy {
   register(registerRequest: UserRegister): Observable<UserRegister> {
     return this.http
       .post<UserRegister>('/api/users/register', registerRequest)
-      .pipe(tap((user) => this.user$$.next(user)));
   }
 
   getUserProfile(): Observable<User> {
     const url = `/api/users/profile?username=${this.user?.username}`;
-    return this.http
-      .get<User>(url)
-      .pipe(tap((user) => this.user$$.next(user)));
+    return this.http.get<User>(url);
   }
 
   updateUserProfile(updateUserProfileRequest: User): Observable<User> {

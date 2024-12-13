@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
-  import { NgClass } from '@angular/common';
 import { UserService } from '../user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,8 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private toastr: ToastrService,
   ) {}
 
   onSubmit(loginForm: NgForm) {
@@ -35,6 +36,7 @@ export class LoginComponent {
       next:(response) => {
         this.router.navigateByUrl('/home');
       }, error:(err) => {
+        this.toastr.error('Invalid username or password', err.error);
         this.hasLoginError = true;
       }
     });

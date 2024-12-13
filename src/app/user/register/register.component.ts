@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { passwordValidator } from '../../utils/password-validator.validator';
 import { emailValidator } from '../../utils/email.validator';
 import { UserRegister } from '../../types/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +30,8 @@ export class RegisterComponent {
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService,
   ) {}
 
   isFieldRequired(controlName: string): boolean {
@@ -72,8 +74,8 @@ export class RegisterComponent {
           this.router.navigateByUrl('/login');
         }, 
         error: (err) => {
-          console.log('MY --- ERROR', err);
-        },
+          this.toastrService.error('Username already exists!', 'Failure');
+        }
       });
   }
 }

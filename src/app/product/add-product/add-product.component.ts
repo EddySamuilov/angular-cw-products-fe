@@ -6,6 +6,7 @@ import { Product, ProductAdd } from '../../types/product';
 import { ProductService } from '../product.service';
 import { CategoryService } from '../../category/category.service';
 import { priceValidator } from '../../utils/price.validator';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-product',
@@ -30,6 +31,7 @@ export class AddProductComponent implements OnInit {
     private categoryService: CategoryService,
     private productService: ProductService,
     private router: Router,
+    private toastrService: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -50,8 +52,11 @@ export class AddProductComponent implements OnInit {
       next: (data) => {
         this.router.navigate(['/products', data]);
       },
-      error: (err) => { 
-        console.log(err);
+      error: (err) => {
+        this.toastrService.error('Something went wrong!', err.error);
+      },
+      complete: () => {
+        this.toastrService.success('Product added!', 'Success');
       }
     });
   }

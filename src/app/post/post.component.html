@@ -6,31 +6,7 @@
       <button class="btn" (click)="onCreatePostClick()">+ Create post</button>
     </div>
     @if (isCreatePostModeTriggred) {
-      <div class="post-form">
-        <h3>Create New Post</h3>
-        <form (ngSubmit)="onAddPost(addPostForm)" #addPostForm="ngForm">
-          <div>
-            <label for="title">Title</label>
-            <input 
-              type="text" 
-              id="title" 
-              [(ngModel)]="newPost.title" 
-              name="title" 
-              required 
-              placeholder="Enter post title" />
-          </div>
-          <div>
-            <label for="description">Description</label>
-            <textarea 
-              id="description" 
-              [(ngModel)]="newPost.description" 
-              name="description" 
-              required 
-              placeholder="Enter post description"></textarea>
-          </div>
-          <button type="submit" [disabled]="!addPostForm.valid">Create Post</button>
-        </form>
-      </div>
+      <app-add-post [product]="product" (closeAddPost)="onCloseAddPost()"/>
     }
     @for (post of product.posts; track $index) {
       @if (post.productId === product.id) {

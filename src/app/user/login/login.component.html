@@ -51,9 +51,14 @@
         <div class="login-err error">
           Invalid username and/or password!
         </div>
+        <!-- <mat-card>
+          <mat-card-content>
+            <button mat-raised-button color="primary" (click)="showError()">ERROR</button>
+          </mat-card-content>
+        </mat-card> -->
       }
         
-      <button [disabled]="loginForm.invalid" [class]="loginForm.invalid ? 'login-btn-disabled' : 'login-btn-enabled' ">Login</button>
+      <button [disabled]="loginForm.invalid" [class]="loginForm.invalid ? 'login-btn-disabled' : 'login-btn-enabled'">Login</button>
 
       <p class="text-center">Don't have an account?
         <a routerLink="/register">Register</a>

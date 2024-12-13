@@ -1,24 +1,26 @@
-<!-- <div class="post-wrapper">
-  <button class="btn" routerLink="/posts/add">+ Create post</button>
-  <div class="post-container">
-    <div class="post-header">
-      <h3>{{ post.title }}</h3>
+
+<div class="post-form">
+  <h3>Create New Post</h3>
+  <form (ngSubmit)="onAddPost(addPostForm)" #addPostForm="ngForm">
+    <div>
+      <label for="title">Title</label>
+      <input 
+        type="text" 
+        id="title" 
+        [(ngModel)]="newPost.title" 
+        name="title" 
+        required 
+        placeholder="Enter post title" />
     </div>
-    <div class="post-body">
-      <p>{{ post.description }}</p>
+    <div>
+      <label for="description">Description</label>
+      <textarea 
+        id="description" 
+        [(ngModel)]="newPost.description" 
+        name="description" 
+        required 
+        placeholder="Enter post description"></textarea>
     </div>
-    <div class="post-info">
-      <div class="post-creator">
-        <p>Posted by: {{ post.createdBy }}</p>
-      </div>
-      <div class="post-footer">
-        <button class="like-btn btn" (click)="onLike(post)">
-          👍 {{ post.likes }}
-        </button>
-        <button class="dislike-btn btn" (click)="onDislike(post)">
-          👎 {{ post.dislikes }}
-        </button>
-      </div>
-    </div>
-  </div>
-</div> -->
+    <button type="submit" [disabled]="addPostForm.invalid">Create Post</button>
+  </form>
+</div>
