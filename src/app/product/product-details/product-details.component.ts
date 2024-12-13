@@ -9,6 +9,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CategoryService } from '../../category/category.service';
 import { UserService } from '../../user/user.service';
 import { PostComponent } from '../../post/post.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-details',
@@ -41,6 +42,7 @@ export class ProductDetailsComponent implements OnInit {
     private categoryService: CategoryService,
     private userService: UserService,
     private router: Router,
+    private toastrService: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -80,5 +82,6 @@ export class ProductDetailsComponent implements OnInit {
   onDelete(id: number): void {
     this.productService.deleteProduct(id).subscribe(() => {});
     this.router.navigate(['/products']);
+    this.toastrService.info('Product removed', 'Deleted')
   }
 }

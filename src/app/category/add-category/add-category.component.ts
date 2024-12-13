@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { CategoryService } from '../category.service';
 import { CategoryAdd } from '../../types/category';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-category',
@@ -22,6 +23,7 @@ export class AddCategoryComponent {
   constructor(
     private categoryService: CategoryService,
     private router: Router,
+    private toastrService: ToastrService,
   ) {}
 
   onAddCategory(): void {
@@ -32,9 +34,10 @@ export class AddCategoryComponent {
     this.categoryService.addCategory(this.addForm.value as CategoryAdd).subscribe({
       next: (categoryId) => {
         this.router.navigate(['/categories']);
+        this.toastrService.success('Succefully added category!', 'Success');
       },
-      error: (err) => { 
-        console.log(err);
+      error: (err) => {
+        this.toastrService.error('Something went wrong!', 'Failure');
       }
     });
   }

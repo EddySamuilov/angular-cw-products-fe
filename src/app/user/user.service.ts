@@ -29,20 +29,22 @@ export class UserService implements OnDestroy {
       .post<UserLogin>('/api/users/login', { username, password })
       .pipe(
         tap((user) => {
-        localStorage.setItem('user', JSON.stringify(user));
-        this.user$$.next(user);
+          localStorage.setItem('user', JSON.stringify(user));
+          this.user$$.next(user);
         }
       ))
   }
 
   register(registerRequest: UserRegister): Observable<UserRegister> {
     return this.http
-      .post<UserRegister>('/api/users/register', registerRequest)
+      .post<UserRegister>('/api/users/register', registerRequest);
   }
 
   getUserProfile(): Observable<User> {
-    const url = `/api/users/profile?username=${this.user?.username}`;
-    return this.http.get<User>(url);
+    const currentUser = this.user$$.value as User;
+    const url = `/api/users/profile?username=${currentUser.username}`;
+    return this.http.get<User>(url)
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
   updateUserProfile(updateUserProfileRequest: User): Observable<User> {

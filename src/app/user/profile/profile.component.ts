@@ -4,6 +4,7 @@ import { User } from '../../types/user';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ElapsedTimePipe } from '../../shared/pipes/elapsed-time.pipe';
 import { emailValidator } from '../../utils/email.validator';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -26,7 +27,7 @@ export class ProfileComponent implements OnInit {
     modified: new FormControl(this.user.modified),
   })
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private toastrService: ToastrService) { }
 
   ngOnInit(): void {
     this.userService.getUserProfile().subscribe({
@@ -34,7 +35,7 @@ export class ProfileComponent implements OnInit {
         this.user = user;
       },
       error: (err) => {
-        console.log(err);
+        this.toastrService.error('Something went wrong', err.error);
       }
     });
   }
@@ -51,9 +52,10 @@ export class ProfileComponent implements OnInit {
         this.user = user;
       },
       error: (err) => {
-        console.log("Invalid request", err);
+        this.toastrService.error("Invalid request", err.error);
       },
       complete: () => {
+        this.toastrService.success('Profile updated', 'Success')
         this.triggerEditMode(event);
       }
     });
