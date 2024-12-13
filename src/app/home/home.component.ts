@@ -26,9 +26,9 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productService.getProducts(null).subscribe((products) => {
+    this.productService.getProducts(null, 5, 1).subscribe((response) => {
       this.isLoading = false;
-      this.products = products;
+      this.products = response.content;
     });
 
     this.categortService.getCategories().subscribe((categories) => {

@@ -32,3 +32,10 @@ export interface ProductAdd {
   price: number;
   categoryType: string;
 }
+
+export interface ProductPagedDTO {
+  content: Product[],
+  page: number,
+  totalItems: number,
+  totalPages: number,
+}

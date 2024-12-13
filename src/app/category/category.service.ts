@@ -17,10 +17,6 @@ export class CategoryService {
 
   getCategories(): Observable<Category[]> {
     let url = `/api/categories`;
-    // if (limit) {
-    //   url += `?limit=${limit}`;
-    // }
-
     return this.http.get<Category[]>(url);
   }
 

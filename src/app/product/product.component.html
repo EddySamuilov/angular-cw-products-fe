@@ -39,5 +39,20 @@
     </article>
   }
   </article>
+  <div class="pagination">
+    <button 
+      [class]="isFirstPage ? 'btn-disabled' : 'btn btn-prev'"
+      [disabled]="isFirstPage"
+      (click)="onPageChange(currentPage - 1)">Prev
+    </button>
+
+    <span class="page-info">Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+
+    <button 
+      [class]="isLastPage ? 'btn-disabled' : 'btn btn-next'"
+      [disabled]="isLastPage"
+      (click)="onPageChange(currentPage + 1)">Next
+    </button>
+  </div>
   }
 </section>

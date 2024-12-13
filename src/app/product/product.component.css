@@ -138,3 +138,20 @@ h3:hover {
   
   box-shadow: 8px 10px 8px -4px black;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+  margin-bottom: 5%;
+  padding: 15px;
+}
+
+.page-info {
+  margin-left: 16px;
+}
+
+.btn-disabled {
+  background-color: grey;
+}

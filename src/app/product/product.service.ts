@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product, ProductAdd, ProductUpsert } from '../types/product';
+import { Product, ProductAdd, ProductPagedDTO, ProductUpsert } from '../types/product';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { UserService } from '../user/user.service';
 
@@ -19,13 +19,14 @@ export class ProductService {
     })
   }
 
-  getProducts(categoryId: string | null): Observable<Product[]> {
-    let url = `/api/products`;
-    if (categoryId) {
-      url += `?categoryId=${categoryId}`;
-    }
+  getProducts(categoryId: string | null, itemsPerPage: number, page: number): Observable<ProductPagedDTO> {
+    let url = `/api/products?page=${page}&itemsPerPage=${itemsPerPage}`;
 
-    return this.http.get<Product[]>(url);
+    if (categoryId) {
+      url += `&categoryId=${categoryId}`;
+    }
+    
+    return this.http.get<ProductPagedDTO>(url);
   }
 
   getSingleProduct(productId: number): Observable<Product> {
